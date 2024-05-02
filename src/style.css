@@ -13,13 +13,11 @@ body{
     align-items: center;
 }
 .board{
-    width: 80%;
+    width: min(80%,500px);
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    /* grid-template-columns: repeat(4,100px); */
 }
 .square{
-    /* width: 100px; */
     height: 100px;
     border: 1px solid var(--clr-drk);
 }
