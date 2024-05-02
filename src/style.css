@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root{
+    --clr-drk:#000000;
+}
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.board{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+.square{
+    border: 1px solid var(--clr-drk);
+}
