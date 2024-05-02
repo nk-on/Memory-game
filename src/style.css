@@ -18,6 +18,9 @@ body{
     grid-template-columns: repeat(4,1fr);
 }
 .square{
+    background:url('/assets/questionMark.png');
+    background-size: cover;
+    background-position: center;
     height: 100px;
     border: 1px solid var(--clr-drk);
 }
