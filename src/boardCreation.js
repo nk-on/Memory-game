@@ -7,3 +7,4 @@ function createBoard() {
   }
 };
 createBoard();
+export default gameBoard
