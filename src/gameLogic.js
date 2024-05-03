@@ -57,3 +57,13 @@ function shuffleArray(array) {
     [array[i], array[j]] = [array[j], array[i]];
   }
 }
+shuffleArray(fruits);
+const squares = Array.from(gameBoard.children);
+function rotateSquare(square, index) {
+  square.style.backgroundImage = `url(${fruits[index].img})`;
+}
+squares.forEach((square, index) => {
+  square.addEventListener('click', () => {
+    rotateSquare(square, index);
+  });
+});
