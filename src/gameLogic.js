@@ -60,10 +60,13 @@ function shuffleArray(array) {
 }
 shuffleArray(fruits);
 const squares = Array.from(gameBoard.children);
-function compareImages(square, index) {}
+function compareImages(square, index) {
+  
+}
 function rotateSquare(square, index) {
   if (rotatedSquares >= 2) {
     compareImages(square, index);
+    rotatedSquares = 0;
     return;
   };
   square.style.backgroundImage = `url(${fruits[index].img})`;
