@@ -1,6 +1,7 @@
 import gameBoard from './boardCreation.js';
 //create 16 objects with according titles and links to images
 //shuffle randomly this fruits array
+let rotatedSquares = 0;
 const fruits = [
   {
     title: 'Apple',
@@ -59,8 +60,14 @@ function shuffleArray(array) {
 }
 shuffleArray(fruits);
 const squares = Array.from(gameBoard.children);
+function compareImages(square, index) {}
 function rotateSquare(square, index) {
+  if (rotatedSquares >= 2) {
+    compareImages(square, index);
+    return;
+  };
   square.style.backgroundImage = `url(${fruits[index].img})`;
+  rotatedSquares++;
 }
 squares.forEach((square, index) => {
   square.addEventListener('click', () => {
