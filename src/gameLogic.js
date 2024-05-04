@@ -98,7 +98,6 @@ function rotateSquare(square, index) {
     compareSquares();
     squares.forEach((square) => square.classList.remove('rotated'));
     selectedFruits = [];
-    return;
   }
   selectedFruits.push(fruits[index]);
   console.log(fruits[index]);
