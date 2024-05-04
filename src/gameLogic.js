@@ -1,7 +1,7 @@
 import gameBoard from './boardCreation.js';
 //create 16 objects with according titles and links to images
 //shuffle randomly this fruits array
-let [rotatedSquares, guessedSquares] = [0, 0];
+let guessedSquares = 0;
 let selectedFruits = [];
 const fruits = [
   {
@@ -82,7 +82,6 @@ function compareSquares() {
   //if not let user to continue rotating hide with question mark again
   const fruit1 = selectedFruits[0];
   const fruit2 = selectedFruits[1];
-  console.log(fruit1, fruit2);
   if (fruit1.title === fruit2.title) {
     guessedSquares++;
   } else {
@@ -94,21 +93,20 @@ function compareSquares() {
   }
 }
 function rotateSquare(square, index) {
-  if (rotatedSquares > 1) {
+  if (selectedFruits.length > 1) {
+    console.log(' i work');
     compareSquares();
     squares.forEach((square) => square.classList.remove('rotated'));
     selectedFruits = [];
-    rotatedSquares = 0;
     return;
   }
   selectedFruits.push(fruits[index]);
+  console.log(fruits[index]);
   square.style.backgroundImage = `url(${fruits[index].img})`;
   square.classList.add('rotated');
-  rotatedSquares++;
 }
 squares.forEach((square, index) => {
   square.addEventListener('click', () => {
-    console.log(index);
     rotateSquare(square, index);
   });
 });
