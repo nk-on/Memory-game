@@ -1,6 +1,4 @@
 import gameBoard from './boardCreation.js';
-//create 16 objects with according titles and links to images
-//shuffle randomly this fruits array
 let guessedSquares = 0;
 let selectedFruits = [];
 const fruits = [
@@ -78,8 +76,6 @@ function shuffleArray(array) {
 shuffleArray(fruits);
 const squares = Array.from(gameBoard.children);
 function compareSquares() {
-  //do titles match ? if so leave them as they are
-  //if not let user to continue rotating hide with question mark again
   const fruit1 = selectedFruits[0];
   const fruit2 = selectedFruits[1];
   if (fruit1.title === fruit2.title) {
@@ -94,13 +90,11 @@ function compareSquares() {
 }
 function rotateSquare(square, index) {
   if (selectedFruits.length > 1) {
-    console.log(' i work');
     compareSquares();
     squares.forEach((square) => square.classList.remove('rotated'));
     selectedFruits = [];
   }
   selectedFruits.push(fruits[index]);
-  console.log(fruits[index]);
   square.style.backgroundImage = `url(${fruits[index].img})`;
   square.classList.add('rotated');
 }
