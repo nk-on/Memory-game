@@ -87,24 +87,28 @@ function compareSquares() {
     guessedSquares++;
   } else {
     squares.forEach((square) => {
-      square.style.backgroundImage = 'url(assets/questionMark.png)';
+      if (square.classList.contains('rotated')) {
+        square.style.backgroundImage = 'url(assets/questionMark.png)';
+      }
     });
   }
 }
 function rotateSquare(square, index) {
   if (rotatedSquares > 1) {
     compareSquares();
+    squares.forEach((square) => square.classList.remove('rotated'));
     selectedFruits = [];
     rotatedSquares = 0;
     return;
   }
   selectedFruits.push(fruits[index]);
   square.style.backgroundImage = `url(${fruits[index].img})`;
+  square.classList.add('rotated');
   rotatedSquares++;
 }
 squares.forEach((square, index) => {
   square.addEventListener('click', () => {
-    console.log(index)
+    console.log(index);
     rotateSquare(square, index);
   });
 });
