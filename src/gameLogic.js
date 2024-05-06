@@ -78,6 +78,7 @@ const squares = Array.from(gameBoard.children);
 function compareSquares() {
   const optionOne = choosenId[0];
   const optionTwo = choosenId[1];
+  console.log(choosenId)
   if (fruits[optionOne].title === fruits[optionTwo].title) {
     guessedSquares++;
   }else{
@@ -98,8 +99,8 @@ function rotateSquare(square) {
   // selectedSquares.push(square);
   square.style.backgroundImage = `url(${fruits[Number(square.id)].img})`;
 }
-squares.forEach((square, index) => {
+squares.forEach((square) => {
   square.addEventListener('click', () => {
-    rotateSquare(square, index);
+    rotateSquare(square);
   });
 });
