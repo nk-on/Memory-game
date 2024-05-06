@@ -1,6 +1,7 @@
 import gameBoard from './boardCreation.js';
 let guessedSquares = 0;
 let selectedFruits = [];
+let selectedSquares = [];
 const fruits = [
   {
     title: 'Apple',
@@ -80,23 +81,19 @@ function compareSquares() {
   const fruit2 = selectedFruits[1];
   if (fruit1.title === fruit2.title) {
     guessedSquares++;
-  } else {
-    squares.forEach((square) => {
-      if (square.classList.contains('rotated')) {
-        square.style.backgroundImage = 'url(assets/questionMark.png)';
-      }
-    });
+    return;
   }
+  selectedSquares.forEach((square) => square.style.backgroundImage = `url(/assets/questionMark.png)`);
 }
 function rotateSquare(square, index) {
   if (selectedFruits.length > 1) {
-    compareSquares();
-    squares.forEach((square) => square.classList.remove('rotated'));
+    compareSquares(square);
     selectedFruits = [];
+    selectedSquares = [];
   }
   selectedFruits.push(fruits[index]);
+  selectedSquares.push(square);
   square.style.backgroundImage = `url(${fruits[index].img})`;
-  square.classList.add('rotated');
 }
 squares.forEach((square, index) => {
   square.addEventListener('click', () => {

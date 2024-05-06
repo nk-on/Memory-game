@@ -3,24 +3,24 @@
   padding: 0;
   box-sizing: border-box;
 }
-:root{
-    --clr-drk:#000000;
+:root {
+  --clr-drk: #000000;
 }
-body{
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.board{
-    width: min(80%,500px);
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
+.board {
+  width: min(80%, 500px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
-.square{
-    background:url('/assets/questionMark.png');
-    background-size: cover;
-    background-position: center;
-    height: 100px;
-    border: 1px solid var(--clr-drk);
+.board div {
+  background: url('/assets/questionMark.png');
+  background-size: cover;
+  background-position: center;
+  height: 100px;
+  border: 1px solid var(--clr-drk);
 }
