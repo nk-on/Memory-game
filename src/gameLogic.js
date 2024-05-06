@@ -1,7 +1,6 @@
 import gameBoard from './boardCreation.js';
 let guessedSquares = 0;
-let selectedFruits = [];
-let selectedSquares = [];
+let choosenId = [];
 const fruits = [
   {
     title: 'Apple',
@@ -77,23 +76,27 @@ function shuffleArray(array) {
 shuffleArray(fruits);
 const squares = Array.from(gameBoard.children);
 function compareSquares() {
-  const fruit1 = selectedFruits[0];
-  const fruit2 = selectedFruits[1];
-  if (fruit1.title === fruit2.title) {
+  const optionOne = choosenId[0];
+  const optionTwo = choosenId[1];
+  if (fruits[optionOne].title === fruits[optionTwo].title) {
     guessedSquares++;
-    return;
+  }else{
+    squares.forEach((square) => {
+      if (choosenId.includes(Number(square.id))) {
+        square.style.backgroundImage = `url(/assets/questionMark.png)`;
+      }
+    });
   }
-  selectedSquares.forEach((square) => square.style.backgroundImage = `url(/assets/questionMark.png)`);
+  choosenId = [];
 }
-function rotateSquare(square, index) {
-  if (selectedFruits.length > 1) {
-    compareSquares(square);
-    selectedFruits = [];
-    selectedSquares = [];
+function rotateSquare(square) {
+  if (choosenId.length > 1) {
+    compareSquares();
   }
-  selectedFruits.push(fruits[index]);
-  selectedSquares.push(square);
-  square.style.backgroundImage = `url(${fruits[index].img})`;
+  choosenId.push(Number(square.id));
+  // selectedFruits.push(fruits[index]);
+  // selectedSquares.push(square);
+  square.style.backgroundImage = `url(${fruits[Number(square.id)].img})`;
 }
 squares.forEach((square, index) => {
   square.addEventListener('click', () => {
