@@ -98,7 +98,7 @@ function rotateSquare(square) {
   square.style.backgroundImage = `url(${fruits[Number(square.id)].img})`;
   checkGameOver();
   if (choosenId.length > 1) {
-    compareSquares();
+    setTimeout(compareSquares, 300);
   }
 }
 squares.forEach((square) => {
