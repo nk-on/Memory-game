@@ -77,14 +77,17 @@ function shuffleArray(array) {
 }
 shuffleArray(fruits);
 const squares = Array.from(gameBoard.children);
+function removePicture() {
+  squares.forEach((square) => {
+    if (choosenId.includes(Number(square.id))) {
+      square.style.backgroundImage = `url(/assets/questionMark.png)`;
+    }
+  });
+}
 function compareSquares() {
   if (choosenId[0] === choosenId[1]) {
     alert('You cant choose one square twice');
-    squares.forEach((square) => {
-      if (choosenId.includes(Number(square.id))) {
-        square.style.backgroundImage = `url(/assets/questionMark.png)`;
-      }
-    });
+    removePicture();
     choosenId = [];
     return;
   }
@@ -95,11 +98,7 @@ function compareSquares() {
     choosenId = [];
     return;
   }
-  squares.forEach((square) => {
-    if (choosenId.includes(Number(square.id))) {
-      square.style.backgroundImage = `url(/assets/questionMark.png)`;
-    }
-  });
+  removePicture();
   choosenId = [];
 }
 function rotateSquare(square) {
