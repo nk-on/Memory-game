@@ -94,13 +94,12 @@ function compareSquares() {
     guessedSquares++;
     choosenId = [];
     return;
-  } else {
-    squares.forEach((square) => {
-      if (choosenId.includes(Number(square.id))) {
-        square.style.backgroundImage = `url(/assets/questionMark.png)`;
-      }
-    });
   }
+  squares.forEach((square) => {
+    if (choosenId.includes(Number(square.id))) {
+      square.style.backgroundImage = `url(/assets/questionMark.png)`;
+    }
+  });
   choosenId = [];
 }
 function rotateSquare(square) {
