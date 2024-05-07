@@ -78,9 +78,18 @@ function shuffleArray(array) {
 shuffleArray(fruits);
 const squares = Array.from(gameBoard.children);
 function compareSquares() {
+  if (choosenId[0] === choosenId[1]) {
+    alert('You cant choose one square twice');
+    squares.forEach((square) => {
+      if (choosenId.includes(Number(square.id))) {
+        square.style.backgroundImage = `url(/assets/questionMark.png)`;
+      }
+    });
+    choosenId = [];
+    return;
+  }
   const optionOne = choosenId[0];
   const optionTwo = choosenId[1];
-  console.log(choosenId);
   if (fruits[optionOne].title === fruits[optionTwo].title) {
     guessedSquares++;
     choosenId = [];
