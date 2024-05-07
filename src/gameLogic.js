@@ -1,6 +1,7 @@
 import gameBoard from './boardCreation.js';
 let guessedSquares = 0;
 let choosenId = [];
+const dialog = document.querySelector('[data-dialog]');
 const fruits = [
   {
     title: 'Apple',
@@ -78,10 +79,12 @@ const squares = Array.from(gameBoard.children);
 function compareSquares() {
   const optionOne = choosenId[0];
   const optionTwo = choosenId[1];
-  console.log(choosenId)
+  console.log(choosenId);
   if (fruits[optionOne].title === fruits[optionTwo].title) {
     guessedSquares++;
-  }else{
+    choosenId = [];
+    return;
+  } else {
     squares.forEach((square) => {
       if (choosenId.includes(Number(square.id))) {
         square.style.backgroundImage = `url(/assets/questionMark.png)`;
@@ -91,16 +94,20 @@ function compareSquares() {
   choosenId = [];
 }
 function rotateSquare(square) {
+  choosenId.push(Number(square.id));
+  square.style.backgroundImage = `url(${fruits[Number(square.id)].img})`;
+  checkGameOver();
   if (choosenId.length > 1) {
     compareSquares();
   }
-  choosenId.push(Number(square.id));
-  // selectedFruits.push(fruits[index]);
-  // selectedSquares.push(square);
-  square.style.backgroundImage = `url(${fruits[Number(square.id)].img})`;
 }
 squares.forEach((square) => {
   square.addEventListener('click', () => {
     rotateSquare(square);
   });
 });
+function checkGameOver() {
+  if (guessedSquares === squares.length / 2 - 1 && choosenId.length === 2) {
+    dialog.show();
+  }
+}
