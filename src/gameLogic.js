@@ -2,6 +2,7 @@ import gameBoard from './boardCreation.js';
 let guessedSquares = 0;
 let choosenId = [];
 const dialog = document.querySelector('[data-dialog]');
+const gameRestart = document.querySelector('[data-restart]');
 const fruits = [
   {
     title: 'Apple',
@@ -111,3 +112,7 @@ function checkGameOver() {
     dialog.show();
   }
 }
+gameRestart.addEventListener('click', () => {
+  location.reload();
+  dialog.close();
+});
