@@ -84,7 +84,19 @@ function removePicture() {
     }
   });
 }
-function compareSquares() {
+function addGuessedClass() {
+  squares.forEach((square) => {
+    if (choosenId.includes(Number(square.id))) {
+      square.classList.add('guessed');
+    }
+  });
+}
+function compareSquares(square) {
+  if (square.classList.contains('guessed')) {
+    alert('You cant choose one square twice');
+    choosenId = [];
+    return;
+  }
   if (choosenId[0] === choosenId[1]) {
     alert('You cant choose one square twice');
     removePicture();
@@ -95,6 +107,7 @@ function compareSquares() {
   const optionTwo = choosenId[1];
   if (fruits[optionOne].title === fruits[optionTwo].title) {
     guessedSquares++;
+    addGuessedClass();
     choosenId = [];
     return;
   }
@@ -106,7 +119,9 @@ function rotateSquare(square) {
   square.style.backgroundImage = `url(${fruits[Number(square.id)].img})`;
   checkGameOver();
   if (choosenId.length > 1) {
-    setTimeout(compareSquares, 300);
+    setTimeout(() => {
+      compareSquares(square);
+    }, 300);
   }
 }
 squares.forEach((square) => {
