@@ -113,6 +113,11 @@ function compareSquares(square) {
   removePicture();
   choosenId = [];
 }
+function checkGameOver() {
+  if (guessedSquares === squares.length / 2 - 1 && choosenId.length === 2) {
+    dialog.show();
+  }
+}
 function rotateSquare(square) {
   choosenId.push(Number(square.id));
   square.style.backgroundImage = `url(${fruits[Number(square.id)].img})`;
@@ -128,11 +133,6 @@ squares.forEach((square) => {
     rotateSquare(square);
   });
 });
-function checkGameOver() {
-  if (guessedSquares === squares.length / 2 - 1 && choosenId.length === 2) {
-    dialog.show();
-  }
-}
 gameRestart.addEventListener('click', () => {
   location.reload();
   dialog.close();
