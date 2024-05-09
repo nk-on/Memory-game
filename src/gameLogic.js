@@ -103,7 +103,7 @@ function compareSquares(square) {
     choosenId = [];
     return;
   }
-  const [optionOneIdx,optionTwoidx] = [choosenId[0], choosenId[1]];
+  const [optionOneIdx, optionTwoidx] = [choosenId[0], choosenId[1]];
   if (fruits[optionOneIdx].title === fruits[optionTwoidx].title) {
     guessedSquares++;
     addGuessedClass();
